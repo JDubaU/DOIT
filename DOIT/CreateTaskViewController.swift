@@ -11,12 +11,11 @@ import UIKit
 class CreateTaskViewController: UIViewController {
     
     @IBOutlet weak var taskNameField: UITextField!
-    @IBOutlet weak var importanceSwitch: UISwitch!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var exlaButton: UISegmentedControl!
     
     
-    
+
     
     
     var previousVC = ToDoViewController()
@@ -27,21 +26,50 @@ class CreateTaskViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func addButton(_ sender: UIButton) {
+    @IBAction func addButton(_ sender: Any) {
         // Create a Task from the outlet information
         
         let task = Task()
         task.name = taskNameField.text!
-        task.importance = importanceSwitch.isOn
         
-        // Add a new task to the array
-        
-        previousVC.tasks.append(task)
-        previousVC.tableView.reloadData()
-        
-        navigationController?.popViewController(animated: true)
+        if taskNameField.text == "" {
+            
+        } else {
+            if (exlaButton.selectedSegmentIndex == 0) {
+                task.noneImportance = true
+                task.firstImportance = false
+                task.secondImportance = false
+                task.thirdImportance = false
+            } else if (exlaButton.selectedSegmentIndex == 1) {
+                task.noneImportance = false
+                task.firstImportance = true
+                task.secondImportance = false
+                task.thirdImportance = false
+            } else if (exlaButton.selectedSegmentIndex == 2) {
+                task.noneImportance = false
+                task.firstImportance = false
+                task.secondImportance = true
+                task.thirdImportance = false
+            } else if (exlaButton.selectedSegmentIndex == 3) {
+                task.noneImportance = false
+                task.firstImportance = false
+                task.secondImportance = false
+                task.thirdImportance = true
+            } else {
+                task.noneImportance = false
+                task.firstImportance = false
+                task.secondImportance = false
+                task.thirdImportance = false
+            }
+            
+            
+            // Add a new task to the array
+            
+            previousVC.tasks.append(task)
+            previousVC.tableView.reloadData()
+            navigationController!.popViewController(animated: true)
+        }
     }
-    
     
 
     override func didReceiveMemoryWarning() {

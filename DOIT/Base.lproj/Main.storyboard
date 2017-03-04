@@ -86,32 +86,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uun-rb-bT7">
-                                <rect key="frame" x="172" y="292" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3P-zU-GQD">
+                                <rect key="frame" x="173" y="287" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
-                                    <action selector="addButton:" destination="Q6z-4m-ZWo" eventType="touchUpInside" id="F7P-1T-Mog"/>
+                                    <action selector="addButton:" destination="Q6z-4m-ZWo" eventType="touchUpInside" id="BwI-mb-hpC"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Y1x-Kc-LAK">
-                                <rect key="frame" x="64" y="240" width="247" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pe2-lS-6KP">
+                                <rect key="frame" x="16" y="224" width="343" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
+                                    <segment title="None"/>
                                     <segment title="❗️"/>
                                     <segment title="❗️❗️"/>
                                     <segment title="❗️❗️❗️"/>
                                 </segments>
-                                <connections>
-                                    <action selector="exlaButton:" destination="Q6z-4m-ZWo" eventType="valueChanged" id="dX1-tE-rGp"/>
-                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="addButton" destination="uun-rb-bT7" id="7Xy-KV-BMZ"/>
-                        <outlet property="exlaButton" destination="Y1x-Kc-LAK" id="0mH-8b-fXt"/>
+                        <outlet property="addButton" destination="g3P-zU-GQD" id="yLA-ef-r90"/>
+                        <outlet property="exlaButton" destination="pe2-lS-6KP" id="RhU-ei-o2p"/>
                         <outlet property="taskNameField" destination="Ytz-bE-HHI" id="5DO-tb-Lmv"/>
                     </connections>
                 </viewController>
@@ -131,27 +129,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TjD-d6-IiI">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TjD-d6-IiI">
                                 <rect key="frame" x="154" y="133" width="67" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Complete"/>
                                 <connections>
                                     <action selector="completeButton:" destination="CFc-FM-TE0" eventType="touchUpInside" id="twV-B9-yyB"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35A-35-KIF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35A-35-KIF">
                                 <rect key="frame" x="16" y="84" width="343" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="35A-35-KIF" firstAttribute="top" secondItem="Vac-5q-1hH" secondAttribute="bottom" constant="20" id="Ls5-oH-ilx"/>
-                            <constraint firstItem="TjD-d6-IiI" firstAttribute="top" secondItem="35A-35-KIF" secondAttribute="bottom" constant="25" id="Y3d-QG-qag"/>
-                            <constraint firstItem="35A-35-KIF" firstAttribute="centerX" secondItem="5sq-WW-FLL" secondAttribute="centerX" id="ajB-tP-ucH"/>
-                            <constraint firstItem="TjD-d6-IiI" firstAttribute="centerX" secondItem="5sq-WW-FLL" secondAttribute="centerX" id="lau-22-Miy"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="completeButton" destination="TjD-d6-IiI" id="uOw-ye-frQ"/>
@@ -160,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eY8-td-i1Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1077.5999999999999" y="886.50674662668678"/>
+            <point key="canvasLocation" x="1079" y="979"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1gQ-y1-KpK">

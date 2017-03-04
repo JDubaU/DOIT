@@ -5,7 +5,8 @@
 //  Created by Jake Wojtas on 2/25/17.
 //  Copyright © 2017 Jake Wojtas. All rights reserved.
 //  TO DO LIST
-//  Set importance on a ! !! !!! scale like Apple Reminders
+//  Add a ranking system that puts most important tasks on the top
+
 
 import UIKit
 
@@ -37,11 +38,17 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = UITableViewCell()
         let task = tasks[indexPath.row]
         cell.textLabel?.text = task.name
-        if task.importance {
+    
+        if task.firstImportance {
             cell.textLabel?.text = "❗️\(task.name)"
+        } else if task.secondImportance {
+            cell.textLabel?.text = "❗️❗️\(task.name)"
+        } else if task.thirdImportance {
+            cell.textLabel?.text = "❗️❗️❗️\(task.name)"
+        } else if task.noneImportance{
+            cell.textLabel?.text = task.name
         } else {
             cell.textLabel?.text = task.name
-            
         }
         return cell
     }
@@ -56,15 +63,24 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func makeTasks() -> [Task] {
         let task1 = Task()
         task1.name = "Walk the Dog"
-        task1.importance = false
+        task1.firstImportance = false
+        task1.secondImportance = false
+        task1.thirdImportance = false
+        task1.noneImportance = false
         
         let task2 = Task()
         task2.name = "FOLLOW YOUR DREAMS"
-        task2.importance = true
+        task2.firstImportance = true
+        task2.secondImportance = false
+        task2.thirdImportance = false
+        task2.noneImportance = false
         
         let task3 = Task()
         task3.name = "Buy textbooks"
-        task3.importance = false
+        task3.firstImportance = false
+        task3.secondImportance = false
+        task3.thirdImportance = false
+        task3.noneImportance = false
         
         return [task1, task2, task3]
     }

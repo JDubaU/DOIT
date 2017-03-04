@@ -12,6 +12,7 @@ class CompleteTaskViewController: UIViewController {
 
     var task = Task()
     var previousVC = ToDoViewController()
+    //var
     
     @IBOutlet weak var taskLabel: UILabel!
     @IBOutlet weak var completeButton: UIButton!
@@ -21,14 +22,17 @@ class CompleteTaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if task.importance {
+        if task.firstImportance {
             taskLabel.text = "❗️\(task.name)"
+        } else if task.secondImportance {
+            taskLabel.text = "❗️❗️\(task.name)"
+        } else if task.thirdImportance {
+            taskLabel.text = "❗️❗️❗️\(task.name)"
+        } else if task.noneImportance{
+            taskLabel.text = task.name
         } else {
             taskLabel.text = task.name
-            
         }
-
-        taskLabel.text = task.name
 
         // Do any additional setup after loading the view.
     }
@@ -41,7 +45,7 @@ class CompleteTaskViewController: UIViewController {
     @IBAction func completeButton(_ sender: UIButton) {
         previousVC.tasks.remove(at: previousVC.selectedIndex)
         previousVC.tableView.reloadData()
-        navigationController?.popViewController(animated: true)
+        navigationController!.popViewController(animated: true)
     }
     
     

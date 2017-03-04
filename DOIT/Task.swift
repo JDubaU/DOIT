@@ -10,6 +10,9 @@ import Foundation
 
 class Task {
     var name = ""
-    var importance = false
+    var noneImportance = false
+    var firstImportance = false
+    var secondImportance = false
+    var thirdImportance = false
 
 }
