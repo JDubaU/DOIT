@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+class Task {
+    var name = ""
+    var importance = false
+
+}
