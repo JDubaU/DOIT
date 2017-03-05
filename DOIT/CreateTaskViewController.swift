@@ -13,12 +13,6 @@ class CreateTaskViewController: UIViewController {
     @IBOutlet weak var taskNameField: UITextField!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var exlaButton: UISegmentedControl!
-    
-    
-
-    
-    
-    var previousVC = ToDoViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +23,15 @@ class CreateTaskViewController: UIViewController {
     @IBAction func addButton(_ sender: Any) {
         // Create a Task from the outlet information
         
-        let task = Task()
-        task.name = taskNameField.text!
-        
         if taskNameField.text == "" {
             
         } else {
+            
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            
+            let task = Task(context: context)
+            task.name = taskNameField.text!
+            
             if (exlaButton.selectedSegmentIndex == 0) {
                 task.noneImportance = true
                 task.firstImportance = false
@@ -62,11 +59,14 @@ class CreateTaskViewController: UIViewController {
                 task.thirdImportance = false
             }
             
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
             
-            // Add a new task to the array
             
-            previousVC.tasks.append(task)
-            previousVC.tableView.reloadData()
+            
+            // Pop Back
+            
+            // previousVC.tasks.append(task)
+            // previousVC.tableView.reloadData()
             navigationController!.popViewController(animated: true)
         }
     }

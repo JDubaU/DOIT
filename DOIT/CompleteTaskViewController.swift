@@ -10,9 +10,9 @@ import UIKit
 
 class CompleteTaskViewController: UIViewController {
 
-    var task = Task()
-    var previousVC = ToDoViewController()
-    //var
+    var task : Task? = nil
+    //var previousVC = ToDoViewController()
+    
     
     @IBOutlet weak var taskLabel: UILabel!
     @IBOutlet weak var completeButton: UIButton!
@@ -22,16 +22,16 @@ class CompleteTaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if task.firstImportance {
-            taskLabel.text = "❗️\(task.name)"
-        } else if task.secondImportance {
-            taskLabel.text = "❗️❗️\(task.name)"
-        } else if task.thirdImportance {
-            taskLabel.text = "❗️❗️❗️\(task.name)"
-        } else if task.noneImportance{
-            taskLabel.text = task.name
+        if task!.firstImportance {
+            taskLabel.text = "❗️\(task!.name!)"
+        } else if task!.secondImportance {
+            taskLabel.text = "❗️❗️\(task!.name!)"
+        } else if task!.thirdImportance {
+            taskLabel.text = "❗️❗️❗️\(task!.name!)"
+        } else if task!.noneImportance{
+            taskLabel.text = task!.name!
         } else {
-            taskLabel.text = task.name
+            taskLabel.text = task!.name!
         }
 
         // Do any additional setup after loading the view.
@@ -43,8 +43,11 @@ class CompleteTaskViewController: UIViewController {
     }
     
     @IBAction func completeButton(_ sender: UIButton) {
-        previousVC.tasks.remove(at: previousVC.selectedIndex)
-        previousVC.tableView.reloadData()
+        //previousVC.tasks.remove(at: previousVC.selectedIndex)
+        //previousVC.tableView.reloadData()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        context.delete(task!)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
         navigationController!.popViewController(animated: true)
     }
     
